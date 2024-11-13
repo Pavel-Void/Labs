@@ -1,0 +1,14 @@
+C:\Users\Void\source\repos\LAB2\bin\Debug\LAB2.exe.config
+C:\Users\Void\source\repos\LAB2\bin\Debug\LAB2.exe
+C:\Users\Void\source\repos\LAB2\bin\Debug\LAB2.pdb
+C:\Users\Void\source\repos\LAB2\obj\Debug\LAB2.csproj.AssemblyReference.cache
+C:\Users\Void\source\repos\LAB2\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
+C:\Users\Void\source\repos\LAB2\obj\Debug\LAB2.exe
+C:\Users\Void\source\repos\LAB2\obj\Debug\LAB2.pdb
+C:\Users\Pavel\source\repos\LAB2\bin\Debug\LAB2.exe.config
+C:\Users\Pavel\source\repos\LAB2\bin\Debug\LAB2.exe
+C:\Users\Pavel\source\repos\LAB2\bin\Debug\LAB2.pdb
+C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.csproj.AssemblyReference.cache
+C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
+C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.exe
+C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.pdb
