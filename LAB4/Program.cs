@@ -82,6 +82,7 @@ namespace Tasks
 
         private static void HandleTask4()
         {
+            Console.WriteLine("Введите путь к файлу");
             var filePath = Console.ReadLine();
 
             if (File.Exists(filePath))
@@ -135,17 +136,41 @@ namespace Tasks
         // Задание 4
         public static void PrintDeafConsonants(string filePath)
         {
-            var deafConsonants = new HashSet<char>("кпстфхцчшщ");
-            var fileText = File.ReadAllText(filePath).ToLower();
+            // Задаем глухие согласные
+            char[] deafConsonants = { 'к', 'п', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш' };
 
-            var words = fileText.Split(new[] { ' ', '\r', '\n', ',', '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
-            var consonantsInAllWords = new HashSet<char>(deafConsonants);
+            // Читаем текст из файла
+            string text;
+            try
+            {
+                text = File.ReadAllText(filePath).ToLower(); // Считываем текст и переводим в нижний регистр
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка чтения файла: {ex.Message}");
+                return;
+            }
+
+            // Разбиваем текст на слова
+            var words = text.Split(new[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?', ';', ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Определяем буквы, которые не входят хотя бы в одно слово
+            var missingLetters = new SortedSet<char>(deafConsonants);
 
             foreach (var word in words)
-                consonantsInAllWords.IntersectWith(word);
+            {
+                foreach (var letter in word)
+                {
+                    if (deafConsonants.Contains(letter))
+                    {
+                        missingLetters.Remove(letter); // Убираем буквы, которые встретились в текущем слове
+                    }
+                }
+            }
 
-            var result = deafConsonants.Except(consonantsInAllWords).OrderBy(x => x);
-            Console.WriteLine("Глухие согласные, которые не входят хотя бы в одно слово: " + string.Join(", ", result));
+            // Печатаем результат
+            Console.WriteLine("Глухие согласные, которые отсутствуют хотя бы в одном слове:");
+            Console.WriteLine(string.Join(", ", missingLetters));
         }
     }
 }
