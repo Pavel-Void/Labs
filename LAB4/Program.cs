@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +11,11 @@ namespace Tasks
         public static void Main()
         {
             Console.WriteLine("Выберите задание (1-4):");
-            int taskChoice = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int taskChoice) || taskChoice < 1 || taskChoice > 4)
+            {
+                Console.WriteLine("Неверный ввод! Введите число от 1 до 4.");
+                return;
+            }
 
             switch (taskChoice)
             {
@@ -27,22 +31,31 @@ namespace Tasks
                 case 4:
                     HandleTask4();
                     break;
-                default:
-                    Console.WriteLine("Неверный номер задания!");
-                    break;
             }
         }
 
         private static void HandleTask1()
         {
             Console.WriteLine("Введите элементы списка L через пробел:");
-            var L = Console.ReadLine().Split().Select(int.Parse).ToList();
+            if (!TryParseIntList(Console.ReadLine(), out var L))
+            {
+                Console.WriteLine("Некорректный ввод списка L.");
+                return;
+            }
 
             Console.WriteLine("Введите элементы списка L1 через пробел:");
-            var L1 = Console.ReadLine().Split().Select(int.Parse).ToList();
+            if (!TryParseIntList(Console.ReadLine(), out var L1))
+            {
+                Console.WriteLine("Некорректный ввод списка L1.");
+                return;
+            }
 
             Console.WriteLine("Введите элементы списка L2 через пробел:");
-            var L2 = Console.ReadLine().Split().Select(int.Parse).ToList();
+            if (!TryParseIntList(Console.ReadLine(), out var L2))
+            {
+                Console.WriteLine("Некорректный ввод списка L2.");
+                return;
+            }
 
             ReplaceSublistInList(L, L1, L2);
 
@@ -53,7 +66,13 @@ namespace Tasks
         private static void HandleTask2()
         {
             Console.WriteLine("Введите элементы списка через пробел для сортировки по возрастанию:");
-            var linkedList = new LinkedList<int>(Console.ReadLine().Split().Select(int.Parse));
+            if (!TryParseIntList(Console.ReadLine(), out var list))
+            {
+                Console.WriteLine("Некорректный ввод списка.");
+                return;
+            }
+
+            var linkedList = new LinkedList<int>(list);
 
             SortLinkedList(linkedList);
 
@@ -64,17 +83,35 @@ namespace Tasks
         private static void HandleTask3()
         {
             Console.WriteLine("Введите перечень игр через запятую:");
-            var games = new HashSet<string>(Console.ReadLine().Split(',').Select(s => s.Trim()));
+            var gamesInput = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(gamesInput))
+            {
+                Console.WriteLine("Некорректный ввод перечня игр.");
+                return;
+            }
+
+            var games = new HashSet<string>(gamesInput.Split(',').Select(s => s.Trim()));
 
             Console.WriteLine("Введите количество студентов:");
-            int studentCount = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int studentCount) || studentCount <= 0)
+            {
+                Console.WriteLine("Некорректное количество студентов.");
+                return;
+            }
 
             var studentGames = new List<HashSet<string>>();
 
             for (int i = 0; i < studentCount; i++)
             {
                 Console.WriteLine($"Введите игры, в которые играет студент {i + 1}, через запятую:");
-                studentGames.Add(new HashSet<string>(Console.ReadLine().Split(',').Select(s => s.Trim())));
+                var input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Некорректный ввод игр.");
+                    return;
+                }
+
+                studentGames.Add(new HashSet<string>(input.Split(',').Select(s => s.Trim())));
             }
 
             AnalyzeGames(games, studentGames);
@@ -82,23 +119,46 @@ namespace Tasks
 
         private static void HandleTask4()
         {
-            Console.WriteLine("Введите путь к файлу");
-            var filePath = Console.ReadLine();
+            string filePath = @"C:\Users\Pavel\repos\Labs\LAB4\Task4.txt";
 
-            if (File.Exists(filePath))
-            {
-                PrintDeafConsonants(filePath);
-            }
-            else
+            if (!File.Exists(filePath))
             {
                 Console.WriteLine("Файл не найден!");
+                return;
             }
+
+            PrintDeafConsonants(filePath);
+        }
+        private static bool TryParseIntList(string input, out List<int> result)
+        {
+            result = null;
+
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            var elements = input.Split();
+            if (elements.All(e => int.TryParse(e, out _)))
+            {
+                result = elements.Select(int.Parse).ToList();
+                return true;
+            }
+
+            return false;
         }
 
         // Задание 1
         public static void ReplaceSublistInList(List<int> L, List<int> L1, List<int> L2)
         {
-            int index = L.FindIndex(sublist => L.Skip(sublist).Take(L1.Count).SequenceEqual(L1));
+            int index = -1;
+            for (int i = 0; i <= L.Count - L1.Count; i++)
+            {
+                if (L.Skip(i).Take(L1.Count).SequenceEqual(L1))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
             if (index != -1)
             {
                 L.RemoveRange(index, L1.Count);
@@ -136,41 +196,31 @@ namespace Tasks
         // Задание 4
         public static void PrintDeafConsonants(string filePath)
         {
-            // Задаем глухие согласные
-            char[] deafConsonants = { 'к', 'п', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш' };
+            string text = File.ReadAllText(filePath);
 
-            // Читаем текст из файла
-            string text;
-            try
+            HashSet<char> deafConsonants = new HashSet<char>("пфктшсхцч");
+            string[] words = text.ToLower().Split(new char[] { ' ', ',', '.', '!', '?', ';', ':', '-', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            //Создаем копию множества для работы
+            HashSet<char> unusedDeafConsonants = new HashSet<char>(deafConsonants);
+
+            foreach (string word in words)
             {
-                text = File.ReadAllText(filePath).ToLower(); // Считываем текст и переводим в нижний регистр
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка чтения файла: {ex.Message}");
-                return;
-            }
-
-            // Разбиваем текст на слова
-            var words = text.Split(new[] { ' ', '\n', '\r', '\t', '.', ',', '!', '?', ';', ':' }, StringSplitOptions.RemoveEmptyEntries);
-
-            // Определяем буквы, которые не входят хотя бы в одно слово
-            var missingLetters = new SortedSet<char>(deafConsonants);
-
-            foreach (var word in words)
-            {
-                foreach (var letter in word)
+                foreach (char c in word)
                 {
-                    if (deafConsonants.Contains(letter))
+                    if (deafConsonants.Contains(c))
                     {
-                        missingLetters.Remove(letter); // Убираем буквы, которые встретились в текущем слове
+                        unusedDeafConsonants.Remove(c);
                     }
                 }
             }
 
-            // Печатаем результат
-            Console.WriteLine("Глухие согласные, которые отсутствуют хотя бы в одном слове:");
-            Console.WriteLine(string.Join(", ", missingLetters));
+            List<char> result = unusedDeafConsonants.ToList();
+            result.Sort();
+
+            Console.WriteLine("Глухие согласные, не входящие хотя бы в одно слово:");
+            Console.WriteLine(string.Join(", ", result));
         }
+
     }
 }
