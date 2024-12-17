@@ -1,0 +1,14 @@
+C:\Users\Pavel\repos\Labs\LAB4\obj\Debug\LAB4.csproj.AssemblyReference.cache
+C:\Users\Pavel\repos\Labs\LAB4\obj\Debug\LAB4.csproj.CoreCompileInputs.cache
+C:\Users\Pavel\repos\Labs\LAB4\bin\Debug\LAB4.exe.config
+C:\Users\Pavel\repos\Labs\LAB4\bin\Debug\LAB4.exe
+C:\Users\Pavel\repos\Labs\LAB4\bin\Debug\LAB4.pdb
+C:\Users\Pavel\repos\Labs\LAB4\obj\Debug\LAB4.exe
+C:\Users\Pavel\repos\Labs\LAB4\obj\Debug\LAB4.pdb
+C:\Users\Void\repos\Labs\LAB4\bin\Debug\LAB4.exe.config
+C:\Users\Void\repos\Labs\LAB4\bin\Debug\LAB4.exe
+C:\Users\Void\repos\Labs\LAB4\bin\Debug\LAB4.pdb
+C:\Users\Void\repos\Labs\LAB4\obj\Debug\LAB4.csproj.AssemblyReference.cache
+C:\Users\Void\repos\Labs\LAB4\obj\Debug\LAB4.csproj.CoreCompileInputs.cache
+C:\Users\Void\repos\Labs\LAB4\obj\Debug\LAB4.exe
+C:\Users\Void\repos\Labs\LAB4\obj\Debug\LAB4.pdb
