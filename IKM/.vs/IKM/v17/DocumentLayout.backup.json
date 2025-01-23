@@ -1,0 +1,235 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Void\\repos\\IKM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\racing\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\racing\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\racing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\racing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\driver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\driver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\driver\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\driver\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\driver\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\driver\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\models\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:models\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\data\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:data\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\models\\racing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:models\\racing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\racing\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\racing\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\controllers\\racingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:controllers\\racingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\views\\car\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:views\\car\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|c:\\users\\void\\repos\\ikm\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0014799F-8AA5-4B36-82B6-C40B6C949957}|IKM.csproj|solutionrelative:controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Racing\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Create.cshtml",
+              "RelativeToolTip": "Views\\Racing\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-23T11:08:05.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Driver\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Index.cshtml",
+              "RelativeToolTip": "Views\\Driver\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-23T11:07:05.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Driver\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Driver\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-23T11:07:03.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Driver\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Driver\\Create.cshtml",
+              "RelativeToolTip": "Views\\Driver\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-23T11:06:54.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Driver.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Models\\Driver.cs",
+              "RelativeDocumentMoniker": "Models\\Driver.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Models\\Driver.cs",
+              "RelativeToolTip": "Models\\Driver.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T11:06:47.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationContext.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Data\\ApplicationContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationContext.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Data\\ApplicationContext.cs",
+              "RelativeToolTip": "Data\\ApplicationContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T11:04:21.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T11:04:04.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Racing\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Index.cshtml",
+              "RelativeToolTip": "Views\\Racing\\Index.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T23:33:17.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Racing\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Racing\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Racing\\Edit.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T23:27:10.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Views\\Car\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Car\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Views\\Car\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Car\\Edit.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-22T23:23:46.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Racing.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Models\\Racing.cs",
+              "RelativeDocumentMoniker": "Models\\Racing.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Models\\Racing.cs",
+              "RelativeToolTip": "Models\\Racing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T23:13:11.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RacingController.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Controllers\\RacingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RacingController.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Controllers\\RacingController.cs",
+              "RelativeToolTip": "Controllers\\RacingController.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAwCYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T23:07:05.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CarController.cs",
+              "DocumentMoniker": "C:\\Users\\Void\\repos\\IKM\\Controllers\\CarController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CarController.cs",
+              "ToolTip": "C:\\Users\\Void\\repos\\IKM\\Controllers\\CarController.cs",
+              "RelativeToolTip": "Controllers\\CarController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAqwGoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T20:39:13.174Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

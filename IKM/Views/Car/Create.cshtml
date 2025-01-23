@@ -1,0 +1,24 @@
+﻿@model Car
+
+@{
+    ViewData["Title"] = "Добавить машину";
+}
+
+<h1>
+    Добавить машину
+</h1>
+
+<div class="car">
+    <form method="post" asp-controller="Car">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="Name_Model" class="control-label"></label>
+        <input asp-for="Name_Model" class="form-control"/>
+        <span asp-validation-for="Name_Model"></span>
+        <input type="submit" value="Сохранить"/>
+    </form>
+</div>
+
+<a asp-action="Index">Вернуться к списку</a>
