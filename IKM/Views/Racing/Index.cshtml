@@ -1,0 +1,48 @@
+﻿@model List<IKM.Models.Racing>
+
+@{
+    ViewData["Title"] = "Гонки";
+}
+
+<h1>
+    Гонки
+</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table" style="border-spacing: 15px;">
+        <thead>
+            <tr>
+                <th>Название гонки</th>
+                <th>Гонщик</th>
+                <th>Машина</th>
+                <th>Место</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var racing in Model)
+            {
+                <tr>
+                    <td style="padding: 10px;">@racing.Name</td>
+                    <td style="padding: 10px;">@racing.Driver.Name</td>
+                    <td style="padding: 10px;">@racing.Car.Name</td>
+                    <td style="padding: 10px;">@racing.Finished</td>
+                    <td style="padding: 10px;">
+                        <form method="post" asp-action="Delete" asp-route-id="@racing.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                        <a href="@Url.Action("Edit", new { id = racing.Id })" class="btn btn-primary btn-sm">Изменить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Racing/Create" class="btn btn-success">Добавление гонки</a>
+}
+else
+{
+    <p>Нет гонок.</p>
+    <a href="/Racing/Create" class="btn btn-success">Добавление гонки</a>
+}
