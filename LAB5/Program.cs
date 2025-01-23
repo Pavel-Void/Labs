@@ -65,6 +65,7 @@ namespace ZooshopApp
                         database.ExecuteQueries();
                         break;
                     case "8":
+                        database.SaveChangesToFile();
                         exit = true;
                         break;
                     default:

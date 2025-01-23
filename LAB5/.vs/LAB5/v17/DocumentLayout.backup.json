@@ -3,12 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|c:\\users\\pavel\\repos\\labs\\lab5\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA5BA9E\\DataBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA94DAE\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,12 +25,12 @@
       "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:animals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:sales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|C:\\Users\\Pavel\\repos\\Labs\\LAB5\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28348576-D2B9-41D0-B547-ABB6CC597D7B}|LAB5.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,20 +44,32 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA94DAE\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\7zO4FA94DAE\\Program.cs",
+              "ToolTip": "C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA94DAE\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\7zO4FA94DAE\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T19:55:58.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Sales.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Sales.cs",
               "RelativeDocumentMoniker": "Sales.cs",
               "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Sales.cs",
               "RelativeToolTip": "Sales.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwAcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowAcAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T18:04:28.642Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T18:04:28.642Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Customer.cs",
               "RelativeDocumentMoniker": "Customer.cs",
@@ -59,59 +77,77 @@
               "RelativeToolTip": "Customer.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAowAMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T17:58:48.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-19T17:58:48.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Animals.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Animals.cs",
               "RelativeDocumentMoniker": "Animals.cs",
               "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Animals.cs",
               "RelativeToolTip": "Animals.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAYAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T17:50:17.748Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwCMAAABFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwEMAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T13:34:50.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Database.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Database.cs",
               "RelativeDocumentMoniker": "Database.cs",
-              "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Database.cs*",
-              "RelativeToolTip": "Database.cs*",
-              "ViewState": "AgIAAP0AAAAAAAAAAAAAAPwAAABjAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Database.cs",
+              "RelativeToolTip": "Database.cs",
+              "ViewState": "AgIAAEwBAAAAAAAAAAAqwG4BAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T16:03:51.998Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Logger.cs",
               "DocumentMoniker": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Logger.cs",
               "RelativeDocumentMoniker": "Logger.cs",
               "ToolTip": "C:\\Users\\Pavel\\repos\\Labs\\LAB5\\Logger.cs",
               "RelativeToolTip": "Logger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-19T16:03:22.306Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DataBase.cs",
+              "DocumentMoniker": "C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA5BA9E\\DataBase.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\7zO4FA5BA9E\\DataBase.cs",
+              "ToolTip": "C:\\Users\\Pavel\\AppData\\Local\\Temp\\7zO4FA5BA9E\\DataBase.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\7zO4FA5BA9E\\DataBase.cs",
+              "ViewState": "AgIAAM4BAAAAAAAAAAAAALEBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T19:56:12.448Z",
               "EditorCaption": ""
             }
           ]

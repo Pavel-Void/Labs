@@ -356,6 +356,72 @@ namespace ZooshopApp
 
             Console.WriteLine($"Сумма покупок собак покупателями из Перми: {totalDogsSoldToPermCustomers}");
         }
+        
+        public void SaveChangesToFile()
+        {
+            Logger.Log("Сохранение изменений в файл Excel.");
+            string outputFile = @"C:\Users\Pavel\repos\Labs\LAB5\save.xlsx";
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using (var package = new ExcelPackage())
+            {
+                // Сохранение данных животных
+                var animalsSheet = package.Workbook.Worksheets["Животные"] ?? package.Workbook.Worksheets.Add("Животные");
+                animalsSheet.Cells.Clear();
+                animalsSheet.Cells[1, 1].Value = "ID";
+                animalsSheet.Cells[1, 2].Value = "Species";
+                animalsSheet.Cells[1, 3].Value = "Breed";
+                int animalRow = 2;
+                foreach (var animal in animals)
+                {
+                    animalsSheet.Cells[animalRow, 1].Value = animal.GetID();
+                    animalsSheet.Cells[animalRow, 2].Value = animal.GetSpecies();
+                    animalsSheet.Cells[animalRow, 3].Value = animal.GetBreed();
+                    animalRow++;
+                }
+
+                // Сохранение данных покупателей
+                var customersSheet = package.Workbook.Worksheets["Покупатели"] ?? package.Workbook.Worksheets.Add("Покупатели");
+                customersSheet.Cells.Clear();
+                customersSheet.Cells[1, 1].Value = "ID";
+                customersSheet.Cells[1, 2].Value = "Name";
+                customersSheet.Cells[1, 3].Value = "Age";
+                customersSheet.Cells[1, 4].Value = "Address";
+                int customerRow = 2;
+                foreach (var customer in customers)
+                {
+                    customersSheet.Cells[customerRow, 1].Value = customer.GetID();
+                    customersSheet.Cells[customerRow, 2].Value = customer.GetName();
+                    customersSheet.Cells[customerRow, 3].Value = customer.GetAge();
+                    customersSheet.Cells[customerRow, 4].Value = customer.GetAddress();
+                    customerRow++;
+                }
+
+                // Сохранение данных продаж
+                var salesSheet = package.Workbook.Worksheets["Продажи"] ?? package.Workbook.Worksheets.Add("Продажи");
+                salesSheet.Cells.Clear();
+                salesSheet.Cells[1, 1].Value = "ID";
+                salesSheet.Cells[1, 2].Value = "Animal ID";
+                salesSheet.Cells[1, 3].Value = "Customer ID";
+                salesSheet.Cells[1, 4].Value = "Date";
+                salesSheet.Cells[1, 5].Value = "Price";
+                int salesRow = 2;
+                foreach (var sale in sales)
+                {
+                    salesSheet.Cells[salesRow, 1].Value = sale.GetID();
+                    salesSheet.Cells[salesRow, 2].Value = sale.GetIdAnimals();
+                    salesSheet.Cells[salesRow, 3].Value = sale.GetIdCustomer();
+                    salesSheet.Cells[salesRow, 4].Value = sale.GetDate();
+                    salesSheet.Cells[salesRow, 5].Value = sale.GetPrice();
+                    salesRow++;
+                }
+
+                // Сохранение изменений в новый файл
+                package.SaveAs(new FileInfo(outputFile));
+                Logger.Log($"Изменения сохранены в файл: {outputFile}");
+            }
+        }
+
     }
 }
-
