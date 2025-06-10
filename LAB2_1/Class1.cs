@@ -1,37 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LAB2
 {
     public class BaseClass
     {
-        protected string text;
+        protected string _text;
 
-        // Конструктор с параметром
         public BaseClass(string text)
         {
-            this.text = text;
+            if (string.IsNullOrWhiteSpace(text))
+                throw new ArgumentNullException(nameof(text), "Текст не может быть нулевым или пустым");
+
+            _text = text;
         }
 
-        // Конструктор копирования
-        public BaseClass(BaseClass other)
+        public BaseClass(BaseClass other) : this(other?._text ?? throw new ArgumentNullException(nameof(other)))
         {
-            text = other.text;
         }
 
-        // Метод добавления трех восклицательных знаков
-        public void AddExclamations()
-        {
-            text = "!!!" + text;
-        }
+        public virtual void AddExclamations() => _text = "!!!" + _text;
 
-        // Перегрузка ToString
-        public override string ToString()
-        {
-            return $"Text: {text}";
-        }
+        public override string ToString() => $"Text: {_text}";
     }
 }

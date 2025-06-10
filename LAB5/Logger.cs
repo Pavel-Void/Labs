@@ -1,31 +1,39 @@
-﻿using System;
+﻿/// <file>
+/// Содержит класс Logger для ведения журнала событий приложения.
+/// </file>
+using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZooshopApp
 {
-    static class Logger
+    /// <summary>
+    /// Предоставляет функциональность для ведения журнала событий приложения.
+    /// </summary>
+    public static class Logger
     {
-        static string logFile;
+        private static string _logFile;
 
+        /// <summary>
+        /// Инициализирует логгер и создаёт файл журнала, если он не существует.
+        /// </summary>
         public static void Initialize()
         {
-
-            logFile = @"C:\Users\Pavel\repos\Labs\LAB5\logs.txt";
-            if (!File.Exists(logFile))
+            _logFile = @"C:\Users\Pavel\repos\Labs\LAB5\logs.txt";
+            if (!File.Exists(_logFile))
             {
-                File.Create(logFile).Close();
+                File.Create(_logFile).Close();
             }
 
             Log("Протоколирование начато.");
         }
 
+        /// <summary>
+        /// Записывает сообщение в файл журнала с отметкой времени.
+        /// </summary>
+        /// <param name="message">Сообщение для записи в журнал.</param>
         public static void Log(string message)
         {
-            File.AppendAllText(logFile, $"[{DateTime.Now}] {message}\n");
+            File.AppendAllText(_logFile, $"[{DateTime.Now}] {message}\n");
         }
     }
 }

@@ -1,34 +1,44 @@
-﻿using OfficeOpenXml;
+﻿/// <file>
+/// Содержит класс Database для управления данными зоомагазина.
+/// </file>
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Packaging;
 using System.Linq;
-
 
 namespace ZooshopApp
 {
-    class Database
+    /// <summary>
+    /// Предоставляет методы для управления и запросов к данным зоомагазина.
+    /// </summary>
+    public class Database
     {
-        private string file;
-        List<Animal> animals;
-        List<Customer> customers;
-        List<Sale> sales;
+        private string _file;
+        private List<Animal> _animals;
+        private List<Customer> _customers;
+        private List<Sale> _sales;
 
-        public Database(string file, List<Animal> animals, List<Customer> customers, List<Sale> sales )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Database"/> class.
+        /// </summary>
+        public Database(string file, List<Animal> animals, List<Customer> customers, List<Sale> sales)
         {
-            this.file = file;
-            this.animals = animals;
-            this.customers = customers;
-            this.sales = sales;
+            _file = file;
+            _animals = animals;
+            _customers = customers;
+            _sales = sales;
         }
 
+        /// <summary>
+        /// Загружает животных из Excel-файла.
+        /// </summary>
         public List<Animal> LoadAnimals()
         {
             Logger.Log("Загрузка данных из файла Excel.");
 
             var animals = new List<Animal>();
-            using (var package = new ExcelPackage(new FileInfo(file)))
+            using (var package = new ExcelPackage(new FileInfo(_file)))
             {
                 var worksheet = package.Workbook.Worksheets["Животные"];
                 if (worksheet == null) return animals;
@@ -47,11 +57,13 @@ namespace ZooshopApp
             }
         }
 
-
+        /// <summary>
+        /// Загружает покупателей из Excel-файла.
+        /// </summary>
         public List<Customer> LoadCustomers()
         {
             var customers = new List<Customer>();
-            using (var package = new ExcelPackage(new FileInfo(file)))
+            using (var package = new ExcelPackage(new FileInfo(_file)))
             {
                 var worksheet = package.Workbook.Worksheets["Покупатели"];
                 if (worksheet == null) return customers;
@@ -71,10 +83,13 @@ namespace ZooshopApp
             return customers;
         }
 
+        /// <summary>
+        /// Загружает продажи из Excel-файла.
+        /// </summary>
         public List<Sale> LoadSales()
         {
             var sales = new List<Sale>();
-            using (var package = new ExcelPackage(new FileInfo(file)))
+            using (var package = new ExcelPackage(new FileInfo(_file)))
             {
                 var worksheet = package.Workbook.Worksheets["Продажи"];
                 if (worksheet == null) return sales;
@@ -91,29 +106,39 @@ namespace ZooshopApp
                     Logger.Log($"Добавлены продажи: id {id}, id_animal {id_animal}, id_customer {id_customer}, date {date}, price {price}");
                     row++;
                 }
-                return sales;     
+                return sales;
             }
         }
 
+        /// <summary>
+        /// Отображает всех животных.
+        /// </summary>
         public void ShowAnimals() =>
-            animals.ForEach(animal => Console.WriteLine($"{animal}\n{new string('_', 50)}"));
+            _animals.ForEach(animal => Console.WriteLine($"{animal}\n{new string('_', 50)}"));
 
+        /// <summary>
+        /// Отображает всех покупателей.
+        /// </summary>
         public void ShowCustomers() =>
-            customers.ForEach(customer => Console.WriteLine($"{customer}\n{new string('_', 50)}"));
+            _customers.ForEach(customer => Console.WriteLine($"{customer}\n{new string('_', 50)}"));
 
+        /// <summary>
+        /// Отображает все продажи.
+        /// </summary>
         public void ShowSales() =>
-            sales.ForEach(sale => Console.WriteLine($"{sale}\n{new string('_', 50)}"));
+            _sales.ForEach(sale => Console.WriteLine($"{sale}\n{new string('_', 50)}"));
 
+        /// <summary>
+        /// Удаляет элемент из базы данных на основе ввода пользователя.
+        /// </summary>
         public void DeleteElement()
         {
-            string k = "";
             Console.WriteLine(new string('_', 100));
             Console.Write("Выбери таблицу: 1 - Животные, 2 - Покупатели, 3 - Продажи: ");
-            k = Console.ReadLine();
+            string k = Console.ReadLine();
 
             Console.Write("Enter ID to delete: ");
-            int id_to_delete;
-            if (!int.TryParse(Console.ReadLine(), out id_to_delete))
+            if (!int.TryParse(Console.ReadLine(), out int idToDelete) || idToDelete < 0)
             {
                 Console.WriteLine("Неверный ID.");
                 return;
@@ -122,66 +147,41 @@ namespace ZooshopApp
             switch (k)
             {
                 case "1":
-                    if (!animals.Any(a => a.GetID() == id_to_delete))
+                    if (!_animals.Any(a => a.GetID() == idToDelete))
                     {
                         Console.WriteLine("Животное с таким ID не найдено.");
                         return;
                     }
 
-                    var animalsToKeep = from animal in animals
-                                        where animal.GetID() != id_to_delete
-                                        select animal;
-                    animals = animalsToKeep.ToList();
+                    _animals = _animals.Where(animal => animal.GetID() != idToDelete).ToList();
+                    _sales = _sales.Where(sale => sale.GetIdAnimals() != idToDelete).ToList();
 
-                    var salesToRemove = from sale in sales
-                                        where sale.GetIdAnimals() == id_to_delete
-                                        select sale.GetID();
-                    var customersToKeep = from customer in customers
-                                          where !salesToRemove.Contains(customer.GetID())
-                                          select customer;
-                    customers = customersToKeep.ToList();
-
-                    var remainingSales = from sale in sales
-                                         where sale.GetIdAnimals() != id_to_delete
-                                         select sale;
-                    sales = remainingSales.ToList();
-
-                    Logger.Log($"Removed animal with id: {id_to_delete} and all connected sales");
+                    Logger.Log($"Removed animal with id: {idToDelete} and all connected sales");
                     break;
 
                 case "2":
-                    if (!customers.Any(c => c.GetID() == id_to_delete))
+                    if (!_customers.Any(c => c.GetID() == idToDelete))
                     {
                         Console.WriteLine("Покупатель с таким ID не найден.");
                         return;
                     }
 
-                    var filteredCustomers = from customer in customers
-                                            where customer.GetID() != id_to_delete
-                                            select customer;
-                    customers = filteredCustomers.ToList();
+                    _customers = _customers.Where(customer => customer.GetID() != idToDelete).ToList();
+                    _sales = _sales.Where(sale => sale.GetIdCustomer() != idToDelete).ToList();
 
-                    var filteredSalesByCustomer = from sale in sales
-                                                  where sale.GetIdCustomer() != id_to_delete
-                                                  select sale;
-                    sales = filteredSalesByCustomer.ToList();
-
-                    Logger.Log($"Удалён покупатель с id: {id_to_delete} и информация об его покупках");
+                    Logger.Log($"Удалён покупатель с id: {idToDelete} и информация об его покупках");
                     break;
 
                 case "3":
-                    if (!sales.Any(s => s.GetID() == id_to_delete))
+                    if (!_sales.Any(s => s.GetID() == idToDelete))
                     {
                         Console.WriteLine("Продажа с таким ID не найдена.");
                         return;
                     }
 
-                    var remainingSalesAfterDelete = from sale in sales
-                                                    where sale.GetID() != id_to_delete
-                                                    select sale;
-                    sales = remainingSalesAfterDelete.ToList();
+                    _sales = _sales.Where(sale => sale.GetID() != idToDelete).ToList();
 
-                    Logger.Log($"Удалена продажа с id: {id_to_delete}");
+                    Logger.Log($"Удалена продажа с id: {idToDelete}");
                     break;
 
                 default:
@@ -191,22 +191,16 @@ namespace ZooshopApp
             }
         }
 
-
-
+        /// <summary>
+        /// Считывает целое число с клавиатуры с проверкой.
+        /// </summary>
         public int Input()
         {
             Logger.Log("Начало ввода");
-            int input;
             string line = Console.ReadLine();
-            if (!int.TryParse(line, out input))
+            if (!int.TryParse(line, out int input) || input < 0)
             {
-                Console.Write("Value must be digit: ");
-                Logger.Log("Wrong value");
-                return Input();
-            }
-            if (input < 0)
-            {
-                Console.Write("Значение не может быть отрицательным: ");
+                Console.Write("Значение должно быть неотрицательным числом: ");
                 Logger.Log("Неверное значение");
                 return Input();
             }
@@ -214,70 +208,101 @@ namespace ZooshopApp
             return input;
         }
 
+        /// <summary>
+        /// Редактирует элемент в базе данных на основе ввода пользователя.
+        /// </summary>
         public void EditElement()
         {
-            string k = "";
             Console.WriteLine(new string('_', 100));
             Console.Write("Выберите таблицу: 1 - Животные, 2 - Покупатели, 3 - Продажи: ");
-            k = Console.ReadLine();
+            string k = Console.ReadLine();
 
             Console.Write("Введите id для изменений: ");
-            int id_to_edit = Input();
+            int idToEdit = Input();
 
-            string new_species;
-            string new_breed;
-            string new_name;
-            int new_age;
-            string new_address;
-            
-            
             switch (k)
             {
                 case "1":
-                    if (!animals.Any(c => c.GetID() == id_to_edit))
+                    if (!_animals.Any(c => c.GetID() == idToEdit))
                     {
-                        Console.WriteLine($"Не могу найти ID: {id_to_edit} в таблице с животными");
+                        Console.WriteLine($"Не могу найти ID: {idToEdit} в таблице с животными");
                         return;
                     }
 
-                    Console.Write("Введите новый вид и породу животного: ");
-                    new_species = Console.ReadLine();
-                    new_breed = Console.ReadLine();
-                    animals[animals.FindIndex(c => c.GetID() == id_to_edit)] = new Animal(id_to_edit, new_species, new_breed);
-                    Logger.Log($"У животного: id {id_to_edit}, новый вид {new_species} и новая порода {new_breed}");
+                    Console.Write("Введите новый вид: ");
+                    string newSpecies = Console.ReadLine();
+                    Console.Write("Введите новую породу: ");
+                    string newBreed = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(newSpecies) || string.IsNullOrWhiteSpace(newBreed))
+                    {
+                        Console.WriteLine("Вид и порода не могут быть пустыми.");
+                        return;
+                    }
+                    _animals[_animals.FindIndex(c => c.GetID() == idToEdit)] = new Animal(idToEdit, newSpecies, newBreed);
+                    Logger.Log($"У животного: id {idToEdit}, новый вид {newSpecies} и новая порода {newBreed}");
                     break;
 
                 case "2":
-                    if (!customers.Any(c => c.GetID() == id_to_edit))
+                    if (!_customers.Any(c => c.GetID() == idToEdit))
                     {
-                        Console.WriteLine($"Не могу найти ID: {id_to_edit} в таблице покупателей");
+                        Console.WriteLine($"Не могу найти ID: {idToEdit} в таблице покупателей");
                         return;
                     }
 
-                    Console.Write("Введите новое имя, возраст и адрес: ");
-                    new_name = Console.ReadLine();
-                    new_age = Int32.Parse(Console.ReadLine());
-                    new_address = Console.ReadLine();
-                    customers[customers.FindIndex(c => c.GetID() == id_to_edit)] = new Customer(id_to_edit, new_name, new_age, new_address);
-                    Logger.Log($"Покупатель: id {id_to_edit}, новое имя {new_name}, новый возраст {new_age}, новый адрес {new_address}");
+                    Console.Write("Введите новое имя: ");
+                    string newName = Console.ReadLine();
+                    Console.Write("Введите новый возраст: ");
+                    if (!int.TryParse(Console.ReadLine(), out int newAge) || newAge < 0)
+                    {
+                        Console.WriteLine("Возраст должен быть неотрицательным числом.");
+                        return;
+                    }
+                    Console.Write("Введите новый адрес: ");
+                    string newAddress = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(newName) || string.IsNullOrWhiteSpace(newAddress))
+                    {
+                        Console.WriteLine("Имя и адрес не могут быть пустыми.");
+                        return;
+                    }
+                    _customers[_customers.FindIndex(c => c.GetID() == idToEdit)] = new Customer(idToEdit, newName, newAge, newAddress);
+                    Logger.Log($"Покупатель: id {idToEdit}, новое имя {newName}, новый возраст {newAge}, новый адрес {newAddress}");
                     break;
 
                 case "3":
-                    if (!sales.Any(s => s.GetID() == id_to_edit))
+                    if (!_sales.Any(s => s.GetID() == idToEdit))
                     {
-                        Console.WriteLine($"Не могу найти ID: {id_to_edit} в таблице продаж");
+                        Console.WriteLine($"Не могу найти ID: {idToEdit} в таблице продаж");
                         return;
                     }
 
-                    Console.Write("Введите новый id животного, id покупателя, дату продажи (в формате ДД-ММ-ГГГГ) и цену: ");
-                    int new_animal_id = Int32.Parse(Console.ReadLine());
-                    int new_customer_id = Int32.Parse(Console.ReadLine());
-                    DateTime new_date = DateTime.Parse(Console.ReadLine());
-                    decimal new_price = Decimal.Parse(Console.ReadLine());
+                    Console.Write("Введите новый id животного: ");
+                    if (!int.TryParse(Console.ReadLine(), out int newAnimalId) || newAnimalId < 0)
+                    {
+                        Console.WriteLine("ID животного должен быть неотрицательным числом.");
+                        return;
+                    }
+                    Console.Write("Введите новый id покупателя: ");
+                    if (!int.TryParse(Console.ReadLine(), out int newCustomerId) || newCustomerId < 0)
+                    {
+                        Console.WriteLine("ID покупателя должен быть неотрицательным числом.");
+                        return;
+                    }
+                    Console.Write("Введите дату продажи (в формате ДД-ММ-ГГГГ): ");
+                    if (!DateTime.TryParse(Console.ReadLine(), out DateTime newDate))
+                    {
+                        Console.WriteLine("Некорректная дата.");
+                        return;
+                    }
+                    Console.Write("Введите цену: ");
+                    if (!decimal.TryParse(Console.ReadLine(), out decimal newPrice) || newPrice < 0)
+                    {
+                        Console.WriteLine("Цена должна быть неотрицательным числом.");
+                        return;
+                    }
 
-                    sales[sales.FindIndex(s => s.GetID() == id_to_edit)] = new Sale(id_to_edit, new_animal_id, new_customer_id, new_date, new_price);
+                    _sales[_sales.FindIndex(s => s.GetID() == idToEdit)] = new Sale(idToEdit, newAnimalId, newCustomerId, newDate, newPrice);
 
-                    Logger.Log($"Продажа: id {id_to_edit}, новый id животного {new_animal_id}, новый id покупателя {new_customer_id}, дата {new_date}, цена {new_price}");
+                    Logger.Log($"Продажа: id {idToEdit}, новый id животного {newAnimalId}, новый id покупателя {newCustomerId}, дата {newDate}, цена {newPrice}");
                     break;
 
                 default:
@@ -287,32 +312,41 @@ namespace ZooshopApp
             }
         }
 
+        /// <summary>
+        /// Добавляет новое животное в базу данных на основе ввода пользователя.
+        /// </summary>
         public void AddElement()
         {
             Console.WriteLine(new string('_', 100));
             Console.Write("Добавление записи в таблицу - Животные: ");
 
-            string new_species;
-            string new_breed;
-            int new_animals_id = animals.Max(c => c.GetID()) + 1;
+            int newAnimalId = _animals.Any() ? _animals.Max(c => c.GetID()) + 1 : 1;
 
-            Console.Write("Введите вид и породу животного: ");
-            new_species = Console.ReadLine();
-            new_breed = Console.ReadLine();
+            Console.Write("Введите вид животного: ");
+            string newSpecies = Console.ReadLine();
+            Console.Write("Введите породу животного: ");
+            string newBreed = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(newSpecies) || string.IsNullOrWhiteSpace(newBreed))
+            {
+                Console.WriteLine("Вид и порода не могут быть пустыми.");
+                return;
+            }
 
-            Animal new_animal = new Animal(new_animals_id, new_species, new_breed);
-            animals.Add(new_animal);
-            Logger.Log($"Добавлено новое животное: id {new_animals_id}, вид {new_species}, порода {new_breed}");
+            Animal newAnimal = new Animal(newAnimalId, newSpecies, newBreed);
+            _animals.Add(newAnimal);
+            Logger.Log($"Добавлено новое животное: id {newAnimalId}, вид {newSpecies}, порода {newBreed}");
         }
 
+        /// <summary>
+        /// Выполняет предопределённые запросы и выводит результаты.
+        /// </summary>
         public void ExecuteQueries()
         {
             Logger.Log("Выполнение запросов.");
 
-            // Запрос 1: Определите, на какую сумму купили кошек породы «Сфинкс» в январе 2023 года.
-            var totalSphynxInJanuary2023 = sales
-                .Where(sale => animals.Any(animal => animal.GetID() == sale.GetIdAnimals() &&
+            var totalSphynxInJanuary2023 = _sales
+                .Where(sale => _animals.Any(animal => animal.GetID() == sale.GetIdAnimals() &&
                                                      animal.GetSpecies() == "Кошка" &&
                                                      animal.GetBreed() == "Сфинкс") &&
                                                      sale.GetDate().Year == 2023 &&
@@ -321,8 +355,7 @@ namespace ZooshopApp
 
             Console.WriteLine($"Сумма покупок кошек породы \"Сфинкс\" в январе 2023 года: {totalSphynxInJanuary2023}");
 
-            // Запрос 2: Какие породы кошек есть в зоомагазине.
-            var catBreeds = animals
+            var catBreeds = _animals
                 .Where(animal => animal.GetSpecies() == "Кошка")
                 .Select(animal => animal.GetBreed())
                 .Distinct()
@@ -334,11 +367,10 @@ namespace ZooshopApp
                 Console.WriteLine(breed);
             }
 
-            // Запрос 3: Какие виды животных были проданы покупателям из Каменска-Уральского.
-            var animalsSoldToCustomersFromKamensk = sales
-                .Where(sale => customers.Any(customer => customer.GetID() == sale.GetIdCustomer() &&
+            var animalsSoldToCustomersFromKamensk = _sales
+                .Where(sale => _customers.Any(customer => customer.GetID() == sale.GetIdCustomer() &&
                                                          customer.GetAddress().Contains("Каменск-Уральский")))
-                .Select(sale => animals.First(animal => animal.GetID() == sale.GetIdAnimals()).GetSpecies())
+                .Select(sale => _animals.First(animal => animal.GetID() == sale.GetIdAnimals()).GetSpecies())
                 .Distinct()
                 .ToList();
 
@@ -348,14 +380,77 @@ namespace ZooshopApp
                 Console.WriteLine(species);
             }
 
-            // Запрос 4: На какую сумму купили собак покупатели из Перми.
-            var totalDogsSoldToPermCustomers = sales
-                .Where(sale => animals.Any(animal => animal.GetID() == sale.GetIdAnimals() && animal.GetSpecies() == "Собака") &&
-                               customers.Any(customer => customer.GetID() == sale.GetIdCustomer() && customer.GetAddress().Contains("Пермь")))
+            var totalDogsSoldToPermCustomers = _sales
+                .Where(sale => _animals.Any(animal => animal.GetID() == sale.GetIdAnimals() && animal.GetSpecies() == "Собака") &&
+                               _customers.Any(customer => customer.GetID() == sale.GetIdCustomer() && customer.GetAddress().Contains("Пермь")))
                 .Sum(sale => sale.GetPrice());
 
             Console.WriteLine($"Сумма покупок собак покупателями из Перми: {totalDogsSoldToPermCustomers}");
         }
+
+        /// <summary>
+        /// Сохраняет изменения в Excel-файл.
+        /// </summary>
+        public void SaveChangesToFile()
+        {
+            Logger.Log("Сохранение изменений в файл Excel.");
+            string outputFile = @"C:\Users\Pavel\repos\Labs\LAB5\save.xlsx";
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using (var package = new ExcelPackage())
+            {
+                var animalsSheet = package.Workbook.Worksheets["Животные"] ?? package.Workbook.Worksheets.Add("Животные");
+                animalsSheet.Cells.Clear();
+                animalsSheet.Cells[1, 1].Value = "ID";
+                animalsSheet.Cells[1, 2].Value = "Species";
+                animalsSheet.Cells[1, 3].Value = "Breed";
+                int animalRow = 2;
+                foreach (var animal in _animals)
+                {
+                    animalsSheet.Cells[animalRow, 1].Value = animal.GetID();
+                    animalsSheet.Cells[animalRow, 2].Value = animal.GetSpecies();
+                    animalsSheet.Cells[animalRow, 3].Value = animal.GetBreed();
+                    animalRow++;
+                }
+
+                var customersSheet = package.Workbook.Worksheets["Покупатели"] ?? package.Workbook.Worksheets.Add("Покупатели");
+                customersSheet.Cells.Clear();
+                customersSheet.Cells[1, 1].Value = "ID";
+                customersSheet.Cells[1, 2].Value = "Name";
+                customersSheet.Cells[1, 3].Value = "Age";
+                customersSheet.Cells[1, 4].Value = "Address";
+                int customerRow = 2;
+                foreach (var customer in _customers)
+                {
+                    customersSheet.Cells[customerRow, 1].Value = customer.GetID();
+                    customersSheet.Cells[customerRow, 2].Value = customer.GetName();
+                    customersSheet.Cells[customerRow, 3].Value = customer.GetAge();
+                    customersSheet.Cells[customerRow, 4].Value = customer.GetAddress();
+                    customerRow++;
+                }
+
+                var salesSheet = package.Workbook.Worksheets["Продажи"] ?? package.Workbook.Worksheets.Add("Продажи");
+                salesSheet.Cells.Clear();
+                salesSheet.Cells[1, 1].Value = "ID";
+                salesSheet.Cells[1, 2].Value = "Animal ID";
+                salesSheet.Cells[1, 3].Value = "Customer ID";
+                salesSheet.Cells[1, 4].Value = "Date";
+                salesSheet.Cells[1, 5].Value = "Price";
+                int salesRow = 2;
+                foreach (var sale in _sales)
+                {
+                    salesSheet.Cells[salesRow, 1].Value = sale.GetID();
+                    salesSheet.Cells[salesRow, 2].Value = sale.GetIdAnimals();
+                    salesSheet.Cells[salesRow, 3].Value = sale.GetIdCustomer();
+                    salesSheet.Cells[salesRow, 4].Value = sale.GetDate();
+                    salesSheet.Cells[salesRow, 5].Value = sale.GetPrice();
+                    salesRow++;
+                }
+
+                package.SaveAs(new FileInfo(outputFile));
+                Logger.Log($"Изменения сохранены в файл: {outputFile}");
+            }
+        }
     }
 }
-

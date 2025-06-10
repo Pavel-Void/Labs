@@ -1,17 +1,36 @@
-﻿using System;
+﻿/// <file>
+/// Точка входа в приложение ZooshopApp.
+/// </file>
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using OfficeOpenXml;
 
 namespace ZooshopApp
 {
+    /// <summary>
+    /// Главный класс программы для приложения зоомагазина.
+    /// </summary>
     class Program
     {
         private static string file = @"C:\Users\Pavel\repos\Labs\LAB5\LR5-var2.xlsx";
+
+        /// <summary>
+        /// Точка входа в приложение.
+        /// </summary>
+        /// <param name="args">Аргументы командной строки.</param>
         static void Main(string[] args)
         {
             Console.WriteLine("Добро пожаловать в приложение 'Зоомагазин'!");
+
+            Console.WriteLine("Выберите режим логирования:");
+            Console.WriteLine("1. Новый файл журнала");
+            Console.WriteLine("2. Дописывать в существующий файл");
+            string logChoice = Console.ReadLine();
+            if (logChoice == "1" && File.Exists(@"C:\Users\Pavel\repos\Labs\LAB5\logs.txt"))
+            {
+                File.Delete(@"C:\Users\Pavel\repos\Labs\LAB5\logs.txt");
+            }
             Logger.Initialize();
 
             List<Animal> animals = new List<Animal>();
@@ -41,6 +60,12 @@ namespace ZooshopApp
                 Console.WriteLine("8. Выход");
 
                 string choice = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(choice) || !"12345678".Contains(choice))
+                {
+                    Console.WriteLine("Неверный выбор. Попробуйте снова.");
+                    continue;
+                }
+
                 switch (choice)
                 {
                     case "1":
@@ -65,10 +90,8 @@ namespace ZooshopApp
                         database.ExecuteQueries();
                         break;
                     case "8":
+                        database.SaveChangesToFile();
                         exit = true;
-                        break;
-                    default:
-                        Console.WriteLine("Неверный выбор. Попробуйте снова.");
                         break;
                 }
             }

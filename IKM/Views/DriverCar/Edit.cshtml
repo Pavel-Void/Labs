@@ -1,0 +1,32 @@
+﻿@model DriverCar
+
+@{
+    ViewData["Title"] = "Редактировать связь водителя и автомобиля";
+}
+
+<h1>Редактировать связь водителя и автомобиля</h1>
+
+<div class="edit_driverCar">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="Driver_ID" />
+        <input type="hidden" asp-for="Car_ID" />
+
+        <div class="form-group">
+            <label asp-for="Driver_ID" class="control-label">ID Водителя</label>
+            <input asp-for="Driver_ID" class="form-control" readonly />
+            <span asp-validation-for="Driver_ID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Car_ID" class="control-label">ID Автомобиля</label>
+            <input asp-for="Car_ID" class="form-control" readonly />
+            <span asp-validation-for="Car_ID" class="text-danger"></span>
+        </div>
+
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+    </form>
+</div>
+
+<a asp-action="Index">Вернуться к списку</a>

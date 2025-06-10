@@ -1,0 +1,68 @@
+﻿@model IKM.Models.DriverProperty
+
+@{
+    ViewData["Title"] = "Добавить недвижимость";
+}
+
+<h1>Добавить недвижимость</h1>
+
+<div class="driver-property">
+    <form method="post" asp-controller="DriverProperty">
+        <div class="form-group">
+            <label asp-for="PropertyType" class="control-label"></label>
+            <input asp-for="PropertyType" class="form-control" />
+            <span asp-validation-for="PropertyType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Area" class="control-label"></label>
+            <input asp-for="Area" class="form-control" />
+            <span asp-validation-for="Area" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EstimatedValue" class="control-label"></label>
+            <input asp-for="EstimatedValue" class="form-control" />
+            <span asp-validation-for="EstimatedValue" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="IsMortgaged" class="control-label"></label>
+            <input type="checkbox" asp-for="IsMortgaged" class="form-check-input" />
+            <span asp-validation-for="IsMortgaged" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="OwnershipPercentage" class="control-label"></label>
+            <input asp-for="OwnershipPercentage" class="form-control" />
+            <span asp-validation-for="OwnershipPercentage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BuildingYear" class="control-label"></label>
+            <input asp-for="BuildingYear" class="form-control" />
+            <span asp-validation-for="BuildingYear" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PropertyID" class="control-label"></label>
+            <input asp-for="PropertyID" class="form-control" />
+            <span asp-validation-for="PropertyID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Driver_ID" class="control-label">Водитель</label>
+            <select asp-for="Driver_ID" class="form-control" asp-items="@(new SelectList(ViewBag.Drivers, "Id", "Name"))">
+                <option value="">Выберите водителя</option>
+            </select>
+            <span asp-validation-for="Driver_ID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdditionalInfo" class="control-label"></label>
+            <input type="file" name="AdditionalInfo" class="form-control" />
+            <span asp-validation-for="AdditionalInfo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<a asp-action="Index">Вернуться к списку</a>

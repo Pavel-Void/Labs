@@ -1,51 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LAB2
 {
     class Program
     {
         static void Main()
-        {   
-            // Тест базового класса
-            string text;
-            
+        {
+            try
+            {
+                TestBaseClass();
+                TestDaughterClass();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        static void TestBaseClass()
+        {
             Console.WriteLine("========Тест базового класса========");
-            Console.WriteLine("Ввведите текст");
 
-            text = Console.ReadLine();
-            BaseClass baseObj = new BaseClass(text);
-            Console.WriteLine(baseObj.ToString()); //копирует введённый текст
+            string text = ReadNonEmptyInput("Введите текст");
+            var baseObj = new BaseClass(text);
 
+            Console.WriteLine(baseObj.ToString());
             baseObj.AddExclamations();
-            Console.WriteLine(baseObj.ToString()); //!!! + введёный текст
+            Console.WriteLine(baseObj.ToString());
 
             // Тест конструктора копирования
-            BaseClass copiedBaseObj = new BaseClass(baseObj);
+            var copiedBaseObj = new BaseClass(baseObj);
             Console.WriteLine(copiedBaseObj.ToString());
+        }
 
-            // Тест дочернего класса
-            string text1, text2;
-            
-            Console.WriteLine("=========Тест дочернего класса=========");
-            Console.WriteLine("Ввведите первое слово или предложение");
-            text1 = Console.ReadLine();
+        static void TestDaughterClass()
+        {
+            Console.WriteLine("========Тест дочернего класса========");
 
-            Console.WriteLine("Ввведите второе слово или предложение");
-            text2 = Console.ReadLine();
-            DaughterClass DaughterObj = new DaughterClass(text1, text2);
-            Console.WriteLine(DaughterObj.ToString());
+            string text1 = ReadNonEmptyInput("Введите первое слово или предложение");
+            string text2 = ReadNonEmptyInput("Введите второе слово или предложение");
 
-            // Тест методов дочернего класса
-            Console.WriteLine("Количество символов: " + DaughterObj.GetTextLength()); //длина строки text
-            Console.WriteLine("Объеденённый текст: " + DaughterObj.CombineText());    
+            var daughterObj = new DaughterClass(text1, text2);
+            Console.WriteLine(daughterObj.ToString());
 
-            // Тест метода AddExclamations() у дочернего класса
-            DaughterObj.AddExclamations();
-            Console.WriteLine(DaughterObj.ToString());
+            Console.WriteLine($"Количество символов: {daughterObj.GetTextLength()}");
+            Console.WriteLine($"Объединённый текст: {daughterObj.CombineText()}");
+
+            daughterObj.AddExclamations();
+            Console.WriteLine(daughterObj.ToString());
+        }
+
+        static string ReadNonEmptyInput(string prompt)
+        {
+            string input;
+            do
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine()?.Trim() ?? "";
+
+                if (string.IsNullOrEmpty(input))
+                    Console.WriteLine("Ошибка: ввод не может быть пустым. Повторите попытку.");
+
+            } while (string.IsNullOrEmpty(input));
+
+            return input;
         }
     }
 }

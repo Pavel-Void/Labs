@@ -12,3 +12,10 @@ C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.csproj.AssemblyReference.cache
 C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
 C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.exe
 C:\Users\Pavel\source\repos\LAB2\obj\Debug\LAB2.pdb
+C:\Users\Pavel\repos\Labs\LAB2_1\bin\Debug\LAB2.exe.config
+C:\Users\Pavel\repos\Labs\LAB2_1\bin\Debug\LAB2.exe
+C:\Users\Pavel\repos\Labs\LAB2_1\bin\Debug\LAB2.pdb
+C:\Users\Pavel\repos\Labs\LAB2_1\obj\Debug\LAB2.csproj.AssemblyReference.cache
+C:\Users\Pavel\repos\Labs\LAB2_1\obj\Debug\LAB2.csproj.CoreCompileInputs.cache
+C:\Users\Pavel\repos\Labs\LAB2_1\obj\Debug\LAB2.exe
+C:\Users\Pavel\repos\Labs\LAB2_1\obj\Debug\LAB2.pdb

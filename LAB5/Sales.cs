@@ -1,57 +1,72 @@
-﻿using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+﻿/// <file>
+/// Содержит класс Sale, представляющий сделку (продажу) в зоомагазине.
+/// </file>
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZooshopApp
 {
-    class Sale
+    /// <summary>
+    /// Представляет сделку (продажу) в зоомагазине.
+    /// </summary>
+    public class Sale
     {
-        int id;
-        int id_animal;
-        int id_customer;
-        DateTime date;
-        decimal price;
+        private int _id;
+        private int _animalId;
+        private int _customerId;
+        private DateTime _date;
+        private decimal _price;
 
-        public Sale(int id, int id_animal, int id_customer, DateTime date, decimal price)
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="Sale"/>.
+        /// </summary>
+        /// <param name="id">Идентификатор продажи.</param>
+        /// <param name="animalId">Идентификатор животного.</param>
+        /// <param name="customerId">Идентификатор покупателя.</param>
+        /// <param name="date">Дата продажи.</param>
+        /// <param name="price">Цена продажи.</param>
+        public Sale(int id, int animalId, int customerId, DateTime date, decimal price)
         {
-            this.id = id;
-            this.id_animal = id_animal;
-            this.id_customer = id_animal;
-            this.date = date;
-            this.price = price;
+            if (id < 0) throw new ArgumentOutOfRangeException(nameof(id));
+            if (animalId < 0) throw new ArgumentOutOfRangeException(nameof(animalId));
+            if (customerId < 0) throw new ArgumentOutOfRangeException(nameof(customerId));
+            if (price < 0) throw new ArgumentOutOfRangeException(nameof(price));
+
+            _id = id;
+            _animalId = animalId;
+            _customerId = customerId;
+            _date = date;
+            _price = price;
         }
 
-        public int GetID()
-        {
-            return id;
-        }
+        /// <summary>
+        /// Получить идентификатор продажи.
+        /// </summary>
+        public int GetID() => _id;
 
-        public int GetIdAnimals()
-        {
-            return id_animal;
-        }
+        /// <summary>
+        /// Получить идентификатор животного.
+        /// </summary>
+        public int GetIdAnimals() => _animalId;
 
-        public int GetIdCustomer()
-        {
-            return id_customer;
-        }
+        /// <summary>
+        /// Получить идентификатор покупателя.
+        /// </summary>
+        public int GetIdCustomer() => _customerId;
 
-        public DateTime GetDate()
-        {
-            return date;
-        }
+        /// <summary>
+        /// Получить дату продажи.
+        /// </summary>
+        public DateTime GetDate() => _date;
 
-        public decimal GetPrice()
-        {
-            return price;
-        }
+        /// <summary>
+        /// Получить цену продажи.
+        /// </summary>
+        public decimal GetPrice() => _price;
 
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{id} | {id_animal} | {id_customer} | {date} | {price}";
+            return $"{_id} | {_animalId} | {_customerId} | {_date} | {_price}";
         }
     }
 }

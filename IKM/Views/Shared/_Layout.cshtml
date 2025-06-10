@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="nav_select" href="/Car">Машины</a>
+            <a class="nav_select" href="/Driver">Гонщики</a>
+            <a class="nav_select" href="/DriverCar">Владельцы машин</a>
+            <a class="nav_select" href="/DriverProperty">Недвижимость водителей</a>
+        </nav>
+    </header>
+    <hr style="color:black; border-style: solid;" />
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>
