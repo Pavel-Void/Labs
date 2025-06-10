@@ -1,38 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LAB2
 {
-    // Дочерний класс
     public class DaughterClass : BaseClass
     {
-        private string SecondText;
+        private string _secondText;
 
-        // Конструктор с параметрами для инициализации всех полей
-        public DaughterClass(string text, string SecondText) : base(text)
+        public DaughterClass(string text, string secondText) : base(text)
         {
-            this.SecondText = SecondText;
+            if (string.IsNullOrWhiteSpace(secondText))
+                throw new ArgumentNullException(nameof(secondText), "Второй текст не может быть нулевым или пустым");
+
+            _secondText = secondText;
         }
 
-        // Метод для получения длины text
-        public int GetTextLength()
+        public int GetTextLength() => _text.Length;
+
+        public string CombineText() => $"{_text} {_secondText}";
+
+        public override void AddExclamations()
         {
-            return text.Length;
+            base.AddExclamations();
+            _secondText = "!!!" + _secondText;
         }
 
-        // Метод объединения text и SecondText
-        public string CombineText()
-        {
-            return text + " " + SecondText;
-        }
-
-        // Перегрузка ToString для вывода всех полей
-        public override string ToString()
-        {
-            return $"Text: {text}, SecondText: {SecondText}";
-        }
+        public override string ToString() => $"Text: {_text}, SecondText: {_secondText}";
     }
 }

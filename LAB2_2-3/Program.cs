@@ -1,73 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace lab2_2_3
+namespace Lab2_2_3
 {
     internal class Program
     {
-
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.Write("Введите количество рублей:");
-            uint rubles;
-            while (!uint.TryParse(Console.ReadLine(), out rubles))
+            try
             {
-                Console.Write("Пожалуйста, введите корректное целое число для рублей:");
-            }
+                uint rubles = ReadUIntInput("Введите количество рублей: ");
+                byte kopeks = ReadByteInput("Введите количество копеек (0-99): ", 0, 99);
 
-            Console.Write("Введите количество копеек (0–99):");
-            byte kopeks;
-            while (!byte.TryParse(Console.ReadLine(), out kopeks) || kopeks >= 100)
+                Money money = new Money(rubles, kopeks);
+                Console.WriteLine($"Начальная сумма: {money}");
+
+                uint kopeksToAdd = ReadUIntInput("Введите количество копеек для добавления: ");
+                money = money.AddKopeks(kopeksToAdd);
+                Console.WriteLine($"После добавления {kopeksToAdd} копеек: {money}");
+
+                money++;
+                Console.WriteLine($"После увеличения на 1 копейку (оператор ++): {money}");
+
+                money--;
+                Console.WriteLine($"После уменьшения на 1 копейку (оператор --): {money}");
+
+                uint rublesOnly = (uint)money;
+                Console.WriteLine($"Рубли (явное приведение): {rublesOnly}");
+
+                double fractionalPart = money;
+                Console.WriteLine($"Дробные рубли (неявное приведение): {fractionalPart:F2}");
+
+                // Тестирование бинарного + (обе стороны)
+                uint addKopeks = ReadUIntInput("Введите количество копеек для добавления (оператор +): ");
+                Money result1 = money + addKopeks;
+                Money result2 = addKopeks + money;
+                Console.WriteLine($"Результат money + kopeks: {result1}");
+                Console.WriteLine($"Результат kopeks + money: {result2}");
+
+                // Тестирование правостороннего вычитания
+                uint subtractKopeks = ReadUIntInput("Введите количество копеек для вычитания (оператор -): ");
+                Money result3 = money - subtractKopeks;
+                Console.WriteLine($"Результат money - kopeks: {result3}");
+
+                // Тестирование левостороннего вычитания
+                uint totalKopeks = ReadUIntInput("Введите общее количество копеек для левостороннего вычитания: ");
+                Money result4 = totalKopeks - money;
+                Console.WriteLine($"Результат totalKopeks - money: {result4}");
+            }
+            catch (Exception ex)
             {
-                Console.Write("Пожалуйста, введите корректное значение для копеек (от 0 до 99):");
+                Console.WriteLine($"Ошибка: {ex.Message}");
             }
-
-            Money money = new Money(rubles, kopeks);
-            Console.WriteLine("Начальная сумма: " + money);
-
-            Console.Write("Введите количество копеек для добавления:");
-            uint kopeksToAdd;
-            while (!uint.TryParse(Console.ReadLine(), out kopeksToAdd))
-            {
-                Console.Write("Пожалуйста, введите корректное значение для копеек:");
-            }
-
-            money.AddKopeks(kopeksToAdd);
-            Console.WriteLine("После добавления " + kopeksToAdd + " копеек: " + money);
-
-            money++;
-            Console.WriteLine("После увеличения на 1 копейку (оператор ++): " + money);
-
-            money--;
-            Console.WriteLine("После уменьшения на 1 копейку (оператор --): " + money);
-
-            uint rublesOnly = (uint)money;
-            Console.WriteLine("Рубли (явное приведение): " + rublesOnly);
-
-            double fractionalRubles = money;
-            Console.WriteLine("Дробные рубли (неявное приведение): " + fractionalRubles);
-
-            Console.Write("Введите количество копеек для добавления (операция +):");
-            uint addKopeks;
-            while (!uint.TryParse(Console.ReadLine(), out addKopeks))
-            {
-                Console.Write("Пожалуйста, введите корректное значение для копеек:");
-            }
-            Money result1 = money + addKopeks;
-            Console.WriteLine("После добавления " + addKopeks + " копеек (операция +): " + result1);
-
-            Console.Write("Введите количество копеек для вычитания (операция -):");
-            uint subtractKopeks;
-            while (!uint.TryParse(Console.ReadLine(), out subtractKopeks))
-            {
-                Console.Write("Пожалуйста, введите корректное значение для копеек:");
-            }
-            Money result2 = money - subtractKopeks;
-            Console.WriteLine("После вычитания " + subtractKopeks + " копеек (операция -): " + result2);
         }
 
+        static uint ReadUIntInput(string prompt)
+        {
+            uint value;
+            Console.Write(prompt);
+            while (!uint.TryParse(Console.ReadLine(), out value))
+            {
+                Console.Write("Ошибка ввода. Пожалуйста, введите неотрицательное целое число: ");
+            }
+            return value;
+        }
+
+        static byte ReadByteInput(string prompt, byte min, byte max)
+        {
+            byte value;
+            Console.Write(prompt);
+            while (!byte.TryParse(Console.ReadLine(), out value) || value < min || value > max)
+            {
+                Console.Write($"Ошибка ввода. Пожалуйста, введите число от {min} до {max}: ");
+            }
+            return value;
+        }
     }
 }

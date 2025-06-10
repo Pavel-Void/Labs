@@ -1,0 +1,43 @@
+﻿@model List<IKM.Models.DriverCar>
+
+@{
+    ViewData["Title"] = "Связи водителей и автомобилей";
+}
+
+<h1>
+    Связи водителей и автомобилей
+</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Водителя</th>
+                <th>ID Автомобиля</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var driverCar in Model)
+            {
+                <tr>
+                    <td>@driverCar.Driver_ID</td>
+                    <td>@driverCar.Car_ID</td>
+                    <td>
+                        <form method="post" asp-action="Delete" asp-route-driverId="@driverCar.Driver_ID" asp-route-carId="@driverCar.Car_ID">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/DriverCar/Create" class="btn btn-success">Добавить связь</a>
+}
+else
+{
+    <p>Нету связей водителей и автомобилей.</p>
+    <a href="/DriverCar/Create" class="btn btn-success">Добавить связь</a>
+}

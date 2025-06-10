@@ -1,0 +1,24 @@
+﻿@model Driver
+
+@{
+    ViewData["Title"] = "Добавить водителя";
+}
+
+<h1>
+    Добавить водителя
+</h1>
+
+<div class="driver">
+    <form method="post" asp-controller="Driver">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name"></span>
+
+        <label asp-for="Age" class="control-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age"></span>
+        <input type="submit" value="Сохранить"/>
+    </form>
+</div>
+
+<a asp-action="Index">Вернуться к списку</a>

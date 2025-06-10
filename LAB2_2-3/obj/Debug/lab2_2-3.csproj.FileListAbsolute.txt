@@ -5,3 +5,10 @@ C:\Users\Pavel\source\repos\lab2_2-3\obj\Debug\lab2_2-3.csproj.AssemblyReference
 C:\Users\Pavel\source\repos\lab2_2-3\obj\Debug\lab2_2-3.csproj.CoreCompileInputs.cache
 C:\Users\Pavel\source\repos\lab2_2-3\obj\Debug\lab2_2-3.exe
 C:\Users\Pavel\source\repos\lab2_2-3\obj\Debug\lab2_2-3.pdb
+C:\Users\Pavel\repos\Labs\LAB2_2-3\bin\Debug\lab2_2-3.exe.config
+C:\Users\Pavel\repos\Labs\LAB2_2-3\bin\Debug\lab2_2-3.exe
+C:\Users\Pavel\repos\Labs\LAB2_2-3\bin\Debug\lab2_2-3.pdb
+C:\Users\Pavel\repos\Labs\LAB2_2-3\obj\Debug\lab2_2-3.csproj.AssemblyReference.cache
+C:\Users\Pavel\repos\Labs\LAB2_2-3\obj\Debug\lab2_2-3.csproj.CoreCompileInputs.cache
+C:\Users\Pavel\repos\Labs\LAB2_2-3\obj\Debug\lab2_2-3.exe
+C:\Users\Pavel\repos\Labs\LAB2_2-3\obj\Debug\lab2_2-3.pdb

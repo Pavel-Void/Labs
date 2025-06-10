@@ -1,49 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/// <file>
+/// Содержит класс Customer, представляющий покупателя в зоомагазине.
+/// </file>
+using System;
 
 namespace ZooshopApp
 {
-    class Customer
+    /// <summary>
+    /// Представляет покупателя в зоомагазине.
+    /// </summary>
+    public class Customer
     {
-        int id;
-        string name;
-        int age;
-        string address;
+        private int _id;
+        private string _name;
+        private int _age;
+        private string _address;
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="id">Идентификатор покупателя.</param>
+        /// <param name="name">Имя покупателя.</param>
+        /// <param name="age">Возраст покупателя.</param>
+        /// <param name="address">Адрес покупателя.</param>
         public Customer(int id, string name, int age, string address)
         {
-            this.id = id;
-            this.name = name;
-            this.age = age;
-            this.address = address;
+            if (id < 0) throw new ArgumentOutOfRangeException(nameof(id));
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Имя не может быть пустым.", nameof(name));
+            if (age < 0) throw new ArgumentOutOfRangeException(nameof(age));
+            if (string.IsNullOrWhiteSpace(address)) throw new ArgumentException("Адрес не может быть пустым.", nameof(address));
+
+            _id = id;
+            _name = name;
+            _age = age;
+            _address = address;
         }
 
-        public int GetID()
-        {
-            return id;
-        }
+        /// <summary>
+        /// Получить идентификатор покупателя.
+        /// </summary>
+        public int GetID() => _id;
 
-        public string GetName()
-        {
-            return name;
-        }
+        /// <summary>
+        /// Получить имя покупателя.
+        /// </summary>
+        public string GetName() => _name;
 
-        public int GetAge()
-        {
-            return age;
-        }
+        /// <summary>
+        /// Получить возраст покупателя.
+        /// </summary>
+        public int GetAge() => _age;
 
-        public string GetAddress()
-        {
-            return address;
-        }
+        /// <summary>
+        /// Получить адрес покупателя.
+        /// </summary>
+        public string GetAddress() => _address;
 
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{id} | {name} | {age} | {address}";
+            return $"{_id} | {_name} | {_age} | {_address}";
         }
     }
 }

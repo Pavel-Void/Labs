@@ -1,0 +1,56 @@
+﻿@model List<IKM.Models.DriverProperty>
+
+@{
+    ViewData["Title"] = "Недвижимость водителей";
+}
+
+<h1>Недвижимость водителей</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+			<tr>
+				<th>Водитель</th>
+                <th>Тип недвижимости</th>
+                <th>Адрес</th>
+                <th>Площадь</th>
+                <th>Оценочная стоимость</th>
+                <th>В ипотеке</th>
+                <th>Процент владения</th>
+                <th>Год постройки</th>
+                <th>Идентификатор</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var property in Model)
+            {
+				<tr>
+					<td>@property.Driver?.Name</td>
+                    <td>@property.PropertyType</td>
+                    <td>@property.Address</td>
+                    <td>@property.Area</td>
+                    <td>@property.EstimatedValue.ToString("C")</td>
+                    <td>@(property.IsMortgaged ? "Да" : "Нет")</td>
+                    <td>@property.OwnershipPercentage</td>
+                    <td>@property.BuildingYear</td>
+                    <td>@property.PropertyID</td>
+                    <td>
+                        <form method="post" asp-action="Delete" asp-route-id="@property.Id">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                        <a href="@Url.Action("Edit", new { id = property.Id })" class="btn btn-primary btn-sm">Изменить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/DriverProperty/Create" class="btn btn-success">Добавить недвижимость</a>
+}
+else
+{
+    <p>Нет недвижимости.</p>
+    <a href="/DriverProperty/Create" class="btn btn-success">Добавить недвижимость</a>
+}
