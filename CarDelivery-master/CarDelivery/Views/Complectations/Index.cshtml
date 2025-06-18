@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CarDelivery.Models.Complectations>
+
+@{
+    ViewData["Title"] = "Complectations";
+}
+
+<h1>Complectations</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Complectationid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Engine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complectationid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Engine)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Complectationid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Complectationid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Complectationid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
